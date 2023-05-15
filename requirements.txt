@@ -1,0 +1,9 @@
+torch==2.0.0
+datasets==2.9.0
+loralib==0.1.1
+sentencepiece==0.1.97
+git+https://github.com/huggingface/transformers.git
+accelerate==0.16.0
+bitsandbytes==0.37.2
+git+https://github.com/huggingface/peft.git
+evaluate==0.4.0

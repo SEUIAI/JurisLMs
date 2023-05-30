@@ -23,13 +23,13 @@ def generate(datas, tokenizer, model):
 
     question_list = []
     for d_one in datas:
-        question_list.append(d_one["input"])
+        question_list.append(d_one["input"].rstrip("。").rstrip("。本院认为，") + "。本院认为，")
 
     text_generator = TextGenerationPipeline(model, tokenizer, device=0)
     text_generator.tokenizer.pad_token_id = text_generator.model.config.eos_token_id
     generate_output_list = text_generator(question_list,
                                           max_length=1020,
-                                          num_beams=1, top_p=0.7,
+                                          num_beams=1, top_p=0.8,
                                           num_return_sequences=1,
                                           eos_token_id=50256,
                                           pad_token_id=text_generator.model.config.eos_token_id)

@@ -43,17 +43,15 @@ python utils/convert_llama_weights_to_hf.py \
 合并扩充Chinese-LLaMA-Alpaca的13B的权重，主要是扩充词表和合并LoRA权重，合并后的模型作为本项目训练和部署的base模型
 
 ```python
-python utils/merge_llama_with_chinese_lora.py \
+python utils/merge_llama_with_chinese_lora_to_hf.py \
     --base_model origin_llama_hf_weight_directory \
     --lora_model chinese_llama_alpaca_lora_weight_directory \
-    --output_type huggingface \
     --output_dir save_merge_weight_directory
 ```
 参数如下：
 
 - base_model：存放HF格式的LLaMA模型权重和配置文件的目录（Step 3保存的目录）
 - lora_model：Chinese-LLaMA-Alpaca（Step 2）的权重目录
-- output_type: 指定输出格式，huggingface
 - output_dir：指定保存全量模型权重的目录
 - offload_dir：可选，对于低内存用户需要指定一个offload缓存路径
 

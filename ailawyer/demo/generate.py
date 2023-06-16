@@ -33,6 +33,8 @@ def generate_prompt(instruction, input=None):
 ### Response:
 """
 
+prompt_prefix = "假设你是一名律师，请分析如下案例，并提供专业的法律服务。"
+
 
 def generate(datas, tokenizer, model):
     """预测数据
@@ -43,7 +45,7 @@ def generate(datas, tokenizer, model):
     """
     p_bar = tqdm(datas)
     for d_one in p_bar:
-        prompt = generate_prompt(d_one["instruction"], d_one["input"])
+        prompt = generate_prompt(prompt_prefix, d_one["input"])
         inputs = tokenizer(prompt, return_tensors="pt")
         input_ids = inputs["input_ids"].to("cuda")
         generation_config = GenerationConfig(temperature=0.1, top_p=0.8, top_k=1, num_beams=1)

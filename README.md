@@ -9,6 +9,7 @@
 
 
 ## AI Lawyer 示例及使用
+详细使用方法见[AI Lawyer](./ailawyer/README.md)
 <!---<div align=center><img src="./images/ailawyer_framework.png"></div>
 <center style="font-size:14px;color:#C0C0C0;text-decoration:underline">AI Lawyer 框架</center>
 <br>--->
@@ -46,7 +47,7 @@ def generate_prompt(instruction, input=None):
 """
 
 base_model = "your_llama_dir" # download from https://github.com/ymcui/Chinese-LLaMA-Alpaca (13B)
-lora_weights = "your_lora_dir" # download from https://huggingface.co/seussg/ailawyer
+lora_weights = "your_lora_dir" # download from https://huggingface.co/seudl/ailawyer
 
 instruction = "假设你是一名律师，请分析如下案例，并提供专业的法律服务。"
 _input = "去年三月份包工头欠我和另外两个工友一共七万多元，然后一直拖着不给，也找不到人，或者是见面了就说没钱。现在要怎么做才能要到钱？"  
@@ -85,6 +86,7 @@ print(output.split("### Response:")[1].strip())
 
 
 ## AI Judge 示例及使用
+详细使用方法见[AI Judge](./aijudge/README.md)
 <!---<div align=center><img src="./images/aijudge_framework.png"></div>
 <center style="font-size:14px;color:#C0C0C0;text-decoration:underline">AI Judge 框架</center>
 <br>--->
@@ -98,7 +100,7 @@ import torch
 from transformers import BertTokenizer, GPT2LMHeadModel, TextGenerationPipeline
 
 fact_description = "1、2013年6月25日9时许，被告人丁某某在平阴县中医院建筑工地工人宿舍，窃取被害人胡某（男，43岁）现金1500元，在逃离现场时被工地工人抓获，丁某某将窃取的现金返还被害人。2、2013年7月12日14时许，被告人丁某某在平阴县府前街文鼎嘉苑建筑工地工人宿舍，窃取被害人陈某（男，31岁）及王某（男，25岁）现金850元，在逃跑时被抓获，丁某某将盗窃现金返还被害人。"
-model_name = "seussg/aijudge"
+model_name = "seudl/aijudge"
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 tokenizer = BertTokenizer.from_pretrained(model_name)
 model = GPT2LMHeadModel.from_pretrained(model_name).to(device)
